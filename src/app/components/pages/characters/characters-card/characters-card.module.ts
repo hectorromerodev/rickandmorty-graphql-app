@@ -10,6 +10,9 @@ import { CharactersCardComponent } from './characters-card.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    CharactersCardComponent
   ]
 })
 export class CharactersCardModule { }
