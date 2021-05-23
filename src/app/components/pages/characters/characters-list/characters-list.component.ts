@@ -8,9 +8,7 @@ import { DataService } from '@app/shared/services/data.service';
 })
 export class CharactersListComponent implements OnInit {
   characters$ = this.dataServ.characters$;
-  constructor(
-    private dataServ: DataService
-  ) { }
+  constructor(private dataServ: DataService) { }
 
   ngOnInit(): void { }
 
