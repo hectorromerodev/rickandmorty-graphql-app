@@ -1,0 +1,14 @@
+section.about__page{
+  margin-top: 2rem;
+  color: #f5f5f5;
+
+  .about{
+    &__container{
+      display: flex;
+      margin-top: 2rem;
+    }
+    &__copy{
+      text-align: end;
+    }
+  }
+}
