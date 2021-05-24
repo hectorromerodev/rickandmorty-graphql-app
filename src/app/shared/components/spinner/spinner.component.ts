@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SpinnerService } from '@app/shared/services/spinner.service';
 
 @Component({
@@ -10,12 +10,8 @@ import { SpinnerService } from '@app/shared/services/spinner.service';
   `,
   styleUrls: ['./spinner.component.scss']
 })
-export class SpinnerComponent implements OnInit {
+export class SpinnerComponent {
   isLoading$ = this.spinnerServ.isLoading$;
 
   constructor(private spinnerServ: SpinnerService) { }
-
-  ngOnInit(): void {
-  }
-
 }

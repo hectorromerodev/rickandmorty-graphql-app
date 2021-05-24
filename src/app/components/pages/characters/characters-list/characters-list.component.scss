@@ -1,8 +1,10 @@
 section.character__list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
   height: auto;
+  div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .scroll{
