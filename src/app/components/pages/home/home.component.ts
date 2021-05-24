@@ -4,8 +4,14 @@ import { LocalStorageService } from '@app/shared/services/local-storage.service'
 @Component({
   selector: 'app-home',
   template: `
-    <section class="character__list">
-      <app-characters-card *ngFor="let character of charactersFav$ | async" [character]="character"></app-characters-card>
+    <h1 class="title">My Favorites characters</h1>
+    <section *ngIf="charactersFav$ | async as characters" class="character__list">
+      <ng-container *ngIf="characters.length; else noFavorites">
+        <app-characters-card *ngFor="let character of characters" [character]="character"></app-characters-card>
+      </ng-container>
+      <ng-template #noFavorites>
+        <app-not-found title="" message="You don't have favorites yet"></app-not-found>
+      </ng-template>
     </section>
   `,
   styleUrls: ['./home.component.scss']
