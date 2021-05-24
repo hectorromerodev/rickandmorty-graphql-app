@@ -6,7 +6,10 @@ import { LocalStorageService } from '@app/shared/services/local-storage.service'
 @Component({
   selector: 'app-characters-list',
   template: `
-    <section class="character__list">
+    <section class="character__list"
+      infiniteScroll
+      (scrolled)="onScrollDown()"
+      >
       <app-characters-card *ngFor="let character of (characters$ | async)" [character]="character"></app-characters-card>
       <figure *ngIf="showScrollButton" class="scroll">
         <img (click)="onScrollTop()" src="assets/imgs/scroll_up.svg" alt="Scroll up" rel="preload" as="image" width="40" height="40">
@@ -18,7 +21,10 @@ import { LocalStorageService } from '@app/shared/services/local-storage.service'
 export class CharactersListComponent {
   characters$ = this.dataServ.characters$;
   showScrollButton = false;
+
+  private pageNum = 1;
   private scrollHeight = 500;
+
   constructor(
     private dataServ: DataService,
     @Inject(DOCUMENT) private document: Document
@@ -30,7 +36,13 @@ export class CharactersListComponent {
     const scrollTop = this.document.documentElement.scrollTop;
     this.showScrollButton = (yOffSet || scrollTop) > this.scrollHeight;
   }
+
   onScrollTop(): void {
     this.document.documentElement.scrollTop = 0;
+  }
+
+  onScrollDown(): void {
+    this.pageNum++;
+    this.dataServ.getCharactersByPage(this.pageNum);
   }
 }
