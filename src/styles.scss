@@ -33,6 +33,11 @@ html {
   scroll-behavior:smooth;
 }
 
+body{
+  display: flex;
+  flex-direction: column;
+}
+
 ul {
   list-style: none;
 }
@@ -41,15 +46,24 @@ a {
   text-decoration: none;
 }
 
+footer{
+  text-align: center;
+  padding: 3em 0;
+  background-color: #8C43E6;
+  p{ color: rgb(197, 197, 197); }
+  a{ color: #fffafa; }
+}
+
 .container {
+  flex: 1 0 auto;
   width: 90%;
-  height: 500px;
+  height: auto;
+  min-height: 100vh;
   margin: 0 auto;
 }
 
-
 section {
-  height: 100vh;
+  height: 100%;
 }
 
 /* HEADER */

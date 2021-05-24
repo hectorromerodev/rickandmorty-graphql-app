@@ -6,9 +6,45 @@ section.about__page{
     &__container{
       display: flex;
       margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    &__paragraph{
+      max-width: 50%;
     }
     &__copy{
       text-align: end;
+    }
+  }
+}
+.social__media{
+  display: flex;
+  // flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 25px;
+  .fa{
+    padding: 10px;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    color: white;
+    &:hover{
+      // opacity: .7;
+      transition: all .5s ease-in-out;
+      transform: scale(1.3);
+    }
+    &-twitter {
+      background: #55ACEE;
+    }
+    &-linkedin {
+      background: #007bb5;
+    }
+    &-github{
+      background: #1f2225;
     }
   }
 }
