@@ -17,7 +17,7 @@ import { LocalStorageService } from '@app/shared/services/local-storage.service'
       </div>
       <!-- NOT RESULT TEMPLATE -->
       <ng-template #showEmpty>
-        <app-not-found title="Not found" message="" [img]="{height: 250, width: 450, src: 'assets/imgs/404.svg' }"></app-not-found>
+        <app-not-found title="" message="Not data found" [img]="{height: 250, width: 450, src: 'assets/imgs/404.svg' }"></app-not-found>
       </ng-template>
       <!-- SCROLL UP BTN -->
       <figure *ngIf="showScrollButton" class="scroll">
