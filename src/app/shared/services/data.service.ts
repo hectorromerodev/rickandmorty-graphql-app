@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular'
 import { BehaviorSubject } from 'rxjs';
 
-import { tap, take, withLatestFrom, pluck } from 'rxjs/operators'
+import { tap, take, withLatestFrom, pluck, mergeMap, find } from 'rxjs/operators'
 import { Character, DataResponse, Episode } from '@interfaces/data.interface';
 import { LocalStorageService } from './local-storage.service';
 
@@ -41,6 +41,13 @@ export class DataService {
     private localStorage: LocalStorageService
   ) {
     this.getDataAPI();
+  }
+
+  getDetails(id: number): any {
+    return this.characters$.pipe(
+      mergeMap((characters: Character[]) => characters),
+      find((character: Character) => character.id === id)
+    );
   }
 
   getCharactersByPage(pageNum: number): void {
