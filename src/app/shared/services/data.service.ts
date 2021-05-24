@@ -112,7 +112,7 @@ export class DataService {
     ).subscribe();
   }
 
-  private getDataAPI(): void {
+  getDataAPI(): void {
     // Apollo petition
     this.apollo.watchQuery<DataResponse>({ query: QUERY })
       .valueChanges.pipe(
