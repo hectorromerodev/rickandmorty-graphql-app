@@ -5,6 +5,8 @@ import { CharactersListRoutingModule } from '@pages/characters/characters-list/c
 import { CharactersListComponent } from '@pages/characters/characters-list/characters-list.component';
 import { CharactersCardModule } from '@pages/characters/characters-card/characters-card.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { SearchModule } from '@app/shared/components/search/search.module';
+import { NotFoundModule } from '@app/components/not-found/not-found.module';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     CommonModule,
     CharactersListRoutingModule,
     CharactersCardModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    SearchModule,
+    NotFoundModule
   ]
 })
 export class CharactersListModule { }
