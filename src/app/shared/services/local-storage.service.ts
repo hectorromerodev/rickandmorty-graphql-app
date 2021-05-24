@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Character } from '@interfaces/data.interface';
+import { ToastrService } from 'ngx-toastr';
 
 const MY_FAVORITES = 'myFavorites';
 @Injectable({
@@ -10,7 +11,9 @@ export class LocalStorageService {
   private charactersFavSubject = new BehaviorSubject<Character[]>([]);
   charactersFav$ = this.charactersFavSubject.asObservable();
 
-  constructor() {
+  constructor(
+    private toastServ: ToastrService
+  ) {
     this.initialStorage();
   }
 
@@ -52,9 +55,10 @@ export class LocalStorageService {
       const currentFav = this.getFavoritesCharacters();
       localStorage.setItem(MY_FAVORITES, JSON.stringify([...currentFav, character]))
       this.charactersFavSubject.next([...currentFav, character])
-
+      this.toastServ.success(`${character.name} added to favorite`, 'Message');
     } catch (error) {
       console.warn('Error saving localstorage', error);
+      this.toastServ.error(`Error saving localstorage ${error}`, 'Message');
     }
   }
 
@@ -63,9 +67,11 @@ export class LocalStorageService {
       const currentFav = this.getFavoritesCharacters();
       const characters = currentFav.filter((char: Character) => char.id !== id);
       localStorage.setItem(MY_FAVORITES, JSON.stringify([...characters]));
-      this.charactersFavSubject.next([...characters])
+      this.charactersFavSubject.next([...characters]);
+      this.toastServ.warning(`Removed from favorites`, 'Message');
     } catch (error) {
       console.warn('Error removing localstorage', error);
+      this.toastServ.error(`Error removing localstorage ${error}`, 'Message');
     }
   }
 
